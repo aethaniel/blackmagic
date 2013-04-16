@@ -49,6 +49,15 @@ static struct cable_desc_s {
 		.interface = INTERFACE_A,
 		.dbus_data = 0x08,
 		.dbus_ddr  = 0x1B,
+		.description = "FLOSS-JTAG",
+		.name = "flossjtag"
+	},
+	{
+		.vendor = 0x0403,
+		.product = 0x6010,
+		.interface = INTERFACE_A,
+		.dbus_data = 0x08,
+		.dbus_ddr  = 0x1B,
 		.description = "FTDIJTAG",
 		.name = "ftdijtag"
 	},
@@ -256,5 +265,13 @@ const char *platform_target_voltage(void)
 void platform_delay(uint32_t delay)
 {
 	usleep(delay * 100000);
+}
+
+void morse(const char *msg, char repeat)
+{
+	(void)repeat;
+
+	if (msg != NULL)
+		fprintf(stderr,"%s\n", msg);
 }
 
